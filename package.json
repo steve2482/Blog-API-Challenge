@@ -1,0 +1,26 @@
+{
+  "name": "blog-api-challenge",
+  "version": "1.0.0",
+  "description": "Thinkful Blog API Challenge",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/steve2482/Blog-API-Challenge.git"
+  },
+  "author": "Steve Brown",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/steve2482/Blog-API-Challenge/issues"
+  },
+  "homepage": "https://github.com/steve2482/Blog-API-Challenge#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "morgan": "^1.7.0",
+    "uuid": "^3.0.1"
+  }
+}
