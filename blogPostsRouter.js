@@ -19,7 +19,6 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', jsonParser, (req, res) => {
-  // check for required blog post fields in body of request
   const requiredFields = ['title', 'content', 'author'];
   for (let i = 0; i < requiredFields.length; i++) {
     const field = requiredFields[i];
@@ -43,15 +42,22 @@ router.put('/:id', jsonParser, (req, res) => {
       return res.status(400).send(message);
     }
   }
+  if (req.params.id !== req.body.id) {
+    const message = (
+      `Request path id (${req.params.id}) and request body id (${req.body.id}) must match)`);
+    console.error(message);
+    return res.status(400).send(message);
+  }
   console.log(`Updating blog post \`${req.params.id}\``);
   const updatedPost = BlogPosts.update(
     {
       id: req.params.id,
-      title: req.params.title,
-      content: req.params.content,
-      author: req.params.author,
-      publishDate: req.params.publishDate
+      title: req.body.title,
+      content: req.body.content,
+      author: req.body.author,
+      publishDate: req.body.publishDate
     });
+  console.log(updatedPost);
   res.status(204).json(updatedPost);
 });
 
