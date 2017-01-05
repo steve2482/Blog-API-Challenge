@@ -9,19 +9,6 @@ app.use(morgan('common'));
 
 app.use('/blog-posts', blogPostsRouter);
 
-function runServer() {
-	const port = process.env.PORT || 8080;
-	return new Promise((resolve, reject) => {
-		app.listen(port, () => {
-      console.log(`Your app is listening on port ${port}`);
-      resolve();
-    })
-    .on('error', err => {
-      reject(err);
-    });
-	});
-}
-
 let server;
 
 function runServer() {
