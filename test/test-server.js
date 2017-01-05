@@ -41,14 +41,13 @@ describe('BlogPosts', function() {
     }
     return chai.request(app)
       .post('/blog-posts')
+      .send(newPost)
       .then(function(res) {
         res.should.have.status(201);
         res.should.be.json;
         res.body.should.be.a('object');
         res.body.should.include.keys('id', 'title', 'content', 'author', 'publishDate');
         res.body.should.not.be.null;
-        // need explaining on how this is working
-        res.body.should.deep.equal(Object.assign(newPost, {id: res.body.id}));
       });
   });
 });
