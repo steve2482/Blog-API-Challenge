@@ -75,4 +75,17 @@ describe('BlogPosts', function() {
       res.body.should.deep.equal(updatedPost)
     });
   });
+
+  it('should delete a post on DELETE', function () {
+    return chai.request(app)
+    .get('/blog-posts')
+    .then(function(res) {
+      const postToDelete = res.body[0].id;
+      return chai.request(app)
+      .delete(`/blog-posts/${postToDelete}`)
+      .then(function(res) {
+        res.should.have.status(204);
+      })  
+    })
+  })
 });
